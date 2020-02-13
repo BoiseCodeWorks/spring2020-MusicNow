@@ -14,12 +14,14 @@ function _drawResults() {
 function _drawActive() {
   document.getElementById("active-song").innerHTML =
     store.State.activeSong.activeTemplate;
+  document.querySelector("audio").play();
 }
 
 //Public
 export default class MusicController {
   constructor() {
     store.subscribe("songs", _drawResults);
+    store.subscribe("activeSong", _drawActive);
   }
   getMusicByQuery(event) {
     event.preventDefault();

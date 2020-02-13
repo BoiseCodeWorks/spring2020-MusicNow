@@ -28,13 +28,13 @@ export default class Song {
   get activeTemplate() {
     return `
       <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="..." />
+            <img src="${this.albumArtLarge}" class="card-img-top" alt="..." />
             <div class="card-body">
-              <h5 class="card-title">not my problem</h5>
+              <h5 class="card-title">${this.title}</h5>
               <p class="card-text">
-                ARTIST ALBUM PRICE
+                ${this.artist} - ${this.album} - $${this.price}
               </p>
-              <audio src="" controls></audio>
+              <audio src="${this.preview}" controls></audio>
             </div>
           </div>
       

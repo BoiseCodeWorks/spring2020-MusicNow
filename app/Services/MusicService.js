@@ -3,9 +3,8 @@ import Song from "../Models/Song.js";
 
 class MusicService {
   setActive(id) {
-    let song = store.State.songs.find(s => {
-      s.id == id;
-    });
+    // debugger;
+    let song = store.State.songs.find(s => s.id == id);
     store.commit("activeSong", song);
   }
   /**
