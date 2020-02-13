@@ -11,6 +11,11 @@ function _drawResults() {
   document.getElementById("search-results").innerHTML = template;
 }
 
+function _drawActive() {
+  document.getElementById("active-song").innerHTML =
+    store.State.activeSong.activeTemplate;
+}
+
 //Public
 export default class MusicController {
   constructor() {

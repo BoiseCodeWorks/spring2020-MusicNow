@@ -2,6 +2,12 @@ import store from "../store.js";
 import Song from "../Models/Song.js";
 
 class MusicService {
+  setActive(id) {
+    let song = store.State.songs.find(s => {
+      s.id == id;
+    });
+    store.commit("activeSong", song);
+  }
   /**
    * Takes in a search query and retrieves the results that will be put in the store
    * @param {string} query

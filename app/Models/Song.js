@@ -15,7 +15,7 @@ export default class Song {
   get previewTemplate() {
     return `
     <div class="col-12">
-    <div class="media" onclick="app.musicController.setActive(${this.id})">
+    <div class="media" onclick="app.musicController.setActive('${this.id}')">
     <img src="${this.albumArtSmall}" class="mr-3" alt="...">
     <div class="media-body">
         <h5 class="mt-0">${this.artist} - ${this.title}</h5>
@@ -23,5 +23,21 @@ export default class Song {
     </div>
     </div>
     `;
+  }
+
+  get activeTemplate() {
+    return `
+      <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">not my problem</h5>
+              <p class="card-text">
+                ARTIST ALBUM PRICE
+              </p>
+              <audio src="" controls></audio>
+            </div>
+          </div>
+      
+      `;
   }
 }
