@@ -11,10 +11,12 @@ function _draw() {
 export default class MusicController {
   constructor() {
     store.subscribe("songs", _draw);
-
-    MusicService.getMusicByQuery("ccr");
   }
   getMusicByQuery(event) {
     event.preventDefault();
+    let formData = event.target;
+    MusicService.getMusicByQuery(formData.query.value);
+
+    formData.reset();
   }
 }

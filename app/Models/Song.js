@@ -11,7 +11,16 @@ export default class Song {
     this.albumArtLarge = this.albumArt.replace(/300x300/g, "500x500");
   }
 
-  get Template() {
-    return this.title;
+  get previewTemplate() {
+    return `
+    <div class="col-12">
+    <div class="media">
+    <img src="${this.albumArtSmall}" class="mr-3" alt="...">
+    <div class="media-body">
+        <h5 class="mt-0">${this.artist} - ${this.title}</h5>
+    </div>
+    </div>
+    </div>
+    `;
   }
 }
