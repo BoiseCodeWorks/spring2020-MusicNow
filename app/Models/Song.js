@@ -34,6 +34,7 @@ export default class Song {
               <p class="card-text">
                 ${this.artist} - ${this.album} - $${this.price}
               </p>
+              <button class="btn btn-success" onclick="app.musicController.addSong()">Add</button>
               <audio src="${this.preview}" controls></audio>
             </div>
           </div>

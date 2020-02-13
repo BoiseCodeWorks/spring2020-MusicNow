@@ -30,6 +30,7 @@ export default class MusicController {
     store.subscribe("songs", _drawResults);
     store.subscribe("activeSong", _drawActive);
     store.subscribe("mySongs", _drawMySongs);
+    MusicService.getApiMusic();
   }
   getMusicByQuery(event) {
     event.preventDefault();
@@ -40,5 +41,9 @@ export default class MusicController {
   }
   setActive(id) {
     MusicService.setActive(id); //not my problem
+  }
+
+  addSong() {
+    MusicService.addToPlaylist();
   }
 }

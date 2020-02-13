@@ -10,6 +10,13 @@ class MusicService {
   setActive(id) {
     // debugger;
     let song = store.State.songs.find(s => s.id == id);
+    if (!song) {
+      song = store.State.mySongs.find(s => s.id == id);
+      if (!song) {
+        console.error("invalid song id");
+        return;
+      }
+    }
     store.commit("activeSong", song);
   }
   /**
