@@ -10,7 +10,14 @@ function _drawResults() {
   });
   document.getElementById("search-results").innerHTML = template;
 }
-
+function _drawMySongs() {
+  let songs = store.State.mySongs;
+  let template = "";
+  songs.forEach(s => {
+    template += s.previewTemplate;
+  });
+  document.getElementById("my-songs").innerHTML = template;
+}
 function _drawActive() {
   document.getElementById("active-song").innerHTML =
     store.State.activeSong.activeTemplate;
@@ -22,6 +29,7 @@ export default class MusicController {
   constructor() {
     store.subscribe("songs", _drawResults);
     store.subscribe("activeSong", _drawActive);
+    store.subscribe("mySongs", _drawMySongs);
   }
   getMusicByQuery(event) {
     event.preventDefault();

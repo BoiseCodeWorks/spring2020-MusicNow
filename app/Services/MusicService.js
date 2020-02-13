@@ -29,6 +29,19 @@ class MusicService {
         throw new Error(err);
       });
   }
+
+  addToPlaylist() {
+    _sandboxApi
+      .post("", store.State.activeSong)
+      .then(res => {
+        let activeSong = new Song(res.data.data);
+        let mySongs = [...store.State.mySongs, activeSong];
+        store.commit("mySongs", mySongs);
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
+  }
   getApiMusic() {
     _sandboxApi
       .get("")
