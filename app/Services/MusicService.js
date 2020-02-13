@@ -7,8 +7,22 @@ let _sandboxApi = axios.create({
 });
 
 class MusicService {
+  removeSong() {
+    _sandboxApi
+      .delete(store.State.activeSong.id)
+      .then(res => {
+        let mySongs = store.State.mySongs.filter(
+          s => s.id != store.State.activeSong.id
+        );
+
+        store.commit("mySongs", mySongs);
+        store.commit("activeSong", null);
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
+  }
   setActive(id) {
-    // debugger;
     let song = store.State.songs.find(s => s.id == id);
     if (!song) {
       song = store.State.mySongs.find(s => s.id == id);
@@ -29,7 +43,9 @@ class MusicService {
     // @ts-ignore
     $.getJSON(url)
       .then(res => {
-        let results = res.results.map(rawData => new Song(rawData));
+        let results = res.results
+          .filter(s => s.kind == "song")
+          .map(rawData => new Song(rawData));
         store.commit("songs", results);
       })
       .catch(err => {

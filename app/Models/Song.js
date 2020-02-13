@@ -1,5 +1,6 @@
 export default class Song {
   constructor(data) {
+    this.sandbox = data.trackId ? false : true;
     this.artist = data.artist || data.artistName;
     this.album = data.album || data.collectionName;
     this.title = data.title || data.trackName;
@@ -25,6 +26,13 @@ export default class Song {
     `;
   }
 
+  get Button() {
+    if (this.sandbox) {
+      return ` <button class="btn btn-danger" onclick="app.musicController.removeSong()">Remove</button>`;
+    }
+    return ` <button class="btn btn-success" onclick="app.musicController.addSong()">Add</button>`;
+  }
+
   get activeTemplate() {
     return `
       <div class="card" style="width: 18rem;">
@@ -34,11 +42,10 @@ export default class Song {
               <p class="card-text">
                 ${this.artist} - ${this.album} - $${this.price}
               </p>
-              <button class="btn btn-success" onclick="app.musicController.addSong()">Add</button>
+                ${this.Button}
               <audio src="${this.preview}" controls></audio>
             </div>
           </div>
-      
       `;
   }
 }

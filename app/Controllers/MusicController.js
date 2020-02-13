@@ -19,6 +19,11 @@ function _drawMySongs() {
   document.getElementById("my-songs").innerHTML = template;
 }
 function _drawActive() {
+  if (!store.State.activeSong) {
+    document.getElementById("active-song").innerHTML = "";
+    return;
+  }
+
   document.getElementById("active-song").innerHTML =
     store.State.activeSong.activeTemplate;
   document.querySelector("audio").play();
@@ -45,5 +50,9 @@ export default class MusicController {
 
   addSong() {
     MusicService.addToPlaylist();
+  }
+
+  removeSong() {
+    MusicService.removeSong();
   }
 }
