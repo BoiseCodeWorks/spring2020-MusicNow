@@ -14,4 +14,7 @@ export default class MusicController {
 
     MusicService.getMusicByQuery("ccr");
   }
+  getMusicByQuery(event) {
+    event.preventDefault();
+  }
 }
