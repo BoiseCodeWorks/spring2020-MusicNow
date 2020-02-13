@@ -1,6 +1,11 @@
 import store from "../store.js";
 import Song from "../Models/Song.js";
 
+let _sandboxApi = axios.create({
+  baseURL: "//bcw-sandbox.herokuapp.com/api/Mark0/songs",
+  timeout: 3000
+});
+
 class MusicService {
   setActive(id) {
     // debugger;
@@ -19,6 +24,17 @@ class MusicService {
       .then(res => {
         let results = res.results.map(rawData => new Song(rawData));
         store.commit("songs", results);
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
+  }
+  getApiMusic() {
+    _sandboxApi
+      .get("")
+      .then(res => {
+        let mySongs = res.data.data.map(s => new Song(s));
+        store.commit("mySongs", mySongs);
       })
       .catch(err => {
         throw new Error(err);

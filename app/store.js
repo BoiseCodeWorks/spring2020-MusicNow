@@ -4,7 +4,9 @@ let _state = {
   /** @type {Song} */
   activeSong: null,
   /** @type {Song[]} */
-  songs: []
+  songs: [],
+  /** @type {Song[]} */
+  mySongs: []
 };
 
 /** Collection of listeners to be called based on keyed state changes
@@ -12,7 +14,8 @@ let _state = {
  */
 let _listeners = {
   activeSong: [],
-  songs: []
+  songs: [],
+  mySongs: []
 };
 
 //NOTE You should not need to change the code from this point down
